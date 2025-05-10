@@ -80,8 +80,8 @@ def analyze_fx(days=90):
     ax.text(x_pos, (market_top + expensive_top)/2, "Expensive", color='orange', fontsize=9, va='center')
 
     # Format x-axis date labels
-    ax.set_title(f'USD/THB Exchange Rate Trend (Last {days} Days)')
-    ax.set_ylabel('THB/USD')
+    ax.set_title(f'THB/USD Exchange Rate Trend (Last {days} Days)')
+    ax.set_ylabel('USD per 1 THB')
     ax.set_yticks(np.arange(round(y_min, 1), round(expensive_top, 1), 0.5))
     ax.xaxis.set_major_locator(mdates.AutoDateLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %d'))
@@ -94,7 +94,7 @@ def analyze_fx(days=90):
 
 # Streamlit app layout
 st.set_page_config(page_title="FX Alert", layout="wide")
-st.title("💸 FX Alert – Should You Exchange USD Today?")
+st.title("💸 FX Alert – Should You Buy USD With THB Today?")
 days = st.selectbox("📅 Select trend window:", [30, 90, 365])
 
 fig, recommendation, today_rate = analyze_fx(days)
